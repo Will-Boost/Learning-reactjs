@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Khoản vay ngân hàng</h1>
+        <p>Số tiền cần vay</p>
+        <input id="money" type="text">
+        <p>Lãi suất (năm)</p>
+        <input id="interest_rate" type="text">
+        <p>Thời gian trả (năm)</p>
+        <input id="time" type="text"><br><br>  
+        <button id="calculate">Tính</button>
+    </div>
+    <div class="calculator-result-wrapper" style="display: none;">
+        <p class="result">Kết quả</p>
+        <h3 class="result-statement"></h3>
+    </div>
+    
+    <script>
+        
+        var calculateButton = document.querySelector("#calculate");
+
+        calculateButton.addEventListener("click", function () {
+            var money = document.querySelector("#money").value;
+            var rate = document.querySelector("#interest_rate").value;
+            var time = document.querySelector("#time").value * 12;
+            
+            var calculateButton = document.querySelector("#calculate");
+            var resultWrapper = document.querySelector(".calculator-result-wrapper");
+            var statement = document.querySelector(".result-statement");
+
+            var monthly_paid = (money / time) + ((money * rate) / (100*12));
+
+            var total_paid;
+                        
+            if (monthly_paid != NaN) {
+                total_paid = monthly_paid * time;
+                resultWrapper.style.display = "block";
+                statement.innerText = "Số tiền trả hằng tháng là " + monthly_paid + "\nTổng số tiền phải trả là " + total_paid + "\nTổng số tiền lãi phải trả là " + (total_paid - money);  
+            } else {
+                resultWrapper.style.display = "none";
+            }
+            
+        });
+    </script>
+</body>
+</html>

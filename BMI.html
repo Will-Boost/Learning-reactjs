@@ -25,12 +25,12 @@
     
     <script>
        
+        var calculateButton = document.querySelector("#calculate");
 
         calculateButton.addEventListener("click", function () {
             var height = document.querySelector("#height");
-            var weight = document.querySelector("#weight");
+            var weight = document.querySelector("#weight");            
             
-            var calculateButton = document.querySelector("#calculate");
             var resultWrapper = document.querySelector(".calculator-result-wrapper");
             var statement = document.querySelector(".result-statement");
             var gender = document.querySelector("input[name=\"gender\"]:checked");
