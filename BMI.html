@@ -33,9 +33,10 @@
             var calculateButton = document.querySelector("#calculate");
             var resultWrapper = document.querySelector(".calculator-result-wrapper");
             var statement = document.querySelector(".result-statement");
-            var BMI;
             var gender = document.querySelector("input[name=\"gender\"]:checked");
+            var BMI;
             
+
             BMI = ((weight.value)/(height.value**2)).toFixed(1); 
             
             if (BMI != NaN) {
