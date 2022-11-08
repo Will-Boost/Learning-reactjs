@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Đo chỉ số (BMI)</h1>
+        <p>Chiều cao</p>
+        <input id="height" type="text">
+        <p>Cân nặng</p>
+        <input id="weight" type="text">
+        <p>Giới tính</p>
+        <input type="radio" id="gender1" name="gender" value="Nam" checked>
+        <label for="gender1">Nam</label>
+        <input type="radio" id="gender2" name="gender" value="Nữ">
+        <label for="gender2">Nữ</label><br><br>  
+        <button id="calculate">Tính BMI</button>
+    </div>
+    <div class="calculator-result-wrapper" style="display: none;">
+        <p class="result">Kết quả</p>
+        <h3 class="result-statement"></h3>
+    </div>
+    
+    <script>
+        var height = document.querySelector("#height");
+        var weight = document.querySelector("#weight");
+        
+        var calculateButton = document.querySelector("#calculate");
+        var resultWrapper = document.querySelector(".calculator-result-wrapper");
+        var statement = document.querySelector(".result-statement");
+        var BMI;
+
+        calculateButton.addEventListener("click", function () {
+            var gender = document.querySelector("input[name=\"gender\"]:checked");
+            BMI = ((weight.value)/(height.value**2)).toFixed(1); 
+            
+            if (BMI != NaN) {
+                resultWrapper.style.display = "block";
+            } else {
+                resultWrapper.style.display = "none";
+            }
+
+            if (gender.value == "Nữ") {
+                if (BMI < 19.1){
+                    statement.innerText = BMI + " | Gầy";    
+                } else if ((BMI >= 19.1) && (BMI < 25.8)){
+                    statement.innerText = BMI + " | Bình thường";
+                } else if ((BMI >= 25.8) && (BMI < 27.3 )){
+                    statement.innerText = BMI + " | Thừa cân nhẹ";
+                } else if ((BMI >= 27.3) && (BMI < 32.3 )){
+                    statement.innerText = BMI + " | Trên lý tưởng";
+                } else {
+                    statement.innerText = BMI + " | Béo phì";
+                }
+            } else {
+                if (BMI < 20.7){
+                    statement.innerText = BMI + " | Gầy";    
+                } else if ((BMI >= 20.7) && (BMI < 26.4)){
+                    statement.innerText = BMI + " | Bình thường";
+                } else if ((BMI >= 26.4) && (BMI < 27.8 )){
+                    statement.innerText = BMI + " | Thừa cân nhẹ";
+                } else if ((BMI >= 27.8) && (BMI < 31.1 )){
+                    statement.innerText = BMI + " | Trên lý tưởng";
+                } else {
+                    statement.innerText = BMI + " | Béo phì";
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>
